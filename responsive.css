@@ -1,55 +1,254 @@
-/* Code for all screen sizes */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800&display=swap');
 
-/* BEGIN MOBILE RULES */
-@media only screen and (max-width: 767px) {
-  /* Code for mobile phones only: */
+/* GENERAL RESET */
 
-  /* Mobile label */
-  main::before {
-    content: "Mobile";
-    background-color: #c8787888;
-  }
-  /* End mobile label */
+* {
+  box-sizing: border-box;
 }
 
-/* BEGIN MEDIUM WIDTH RULES */
-@media only screen and (min-width: 768px) and (max-width: 1399px) {
-  /* Code for medium width and bigger : */
-
-  /* Laptop label */
-  main::before {
-    content: "Laptop";
-    background-color: #45454588;
-  }
-  /* End laptop label */
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #dedbd6;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-/* BEGIN WIDE SCREEN RULES */
-@media only screen and (min-width: 1400px) {
-  /* Code for wide screen only */
+/* MAIN MAGAZINE COVER */
 
-  /* Widescreen label */
-  main::before {
-    content: "Wide";
-    background-color: #00438888;
-  }
-  /* End widescreen label */
+.cover {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  aspect-ratio: 850 / 990;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #77736d;
+  color: #111;
+  border: 4px solid #b5b0a8;
 }
 
-/* BACK TO CODE FOR ALL SIZES */
+/* PORTRAIT */
 
-/* Code to insert circular label label to show how responsive code is working on lower right */
-main::before {
-  position: fixed;
-  bottom: 2px;
-  right: 2px;
-  color: #efefef;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  font-family: Helvetica, sans-serif;
-  font-size: 8pt;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.portrait {
+  position: absolute;
+  inset: 0;
+
+  background-color: #77736d;
+  background-image:
+    linear-gradient(90deg,
+      rgba(40, 35, 30, 0.12),
+      transparent 65%),
+    url("portrait.png");
+
+  background-size: cover;
+  background-position: center top;
+  z-index: 1;
+}
+
+/* DATE */
+
+.top-date {
+  position: absolute;
+  top: 2%;
+  right: 5%;
+  text-align: right;
+  font-size: clamp(8px, 1.4vw, 12px);
+  z-index: 25;
+}
+
+/* MAGAZINE TITLE */
+
+.masthead {
+  position: absolute;
+  top: 4%;
+  right: 5%;
+  width: 32%;
+  height: 30%;
+  z-index: 4;
+  text-align: left;
+  line-height: 0.83;
+}
+
+.new-york {
+  font-size: clamp(22px, 6.2vw, 53px);
+}
+
+.style-title {
+  font-size: clamp(22px, 6.1vw, 52px);
+}
+
+.magazine {
+  font-size: clamp(18px, 5.4vw, 46px);
+  letter-spacing: -3px;
+}
+
+/* RED T */
+
+.red-t {
+  position: absolute;
+  top: 15%;
+  right: -4%;
+  font-family: Arial, sans-serif;
+  font-size: clamp(90px, 27.5vw, 235px);
+  font-weight: bold;
+  line-height: 1;
+  color: #e33229;
+  z-index: -1;
+}
+
+/* THE GREATS */
+
+.greats {
+  position: absolute;
+  top: 34%;
+  right: 4.5%;
+  width: 30%;
+  z-index: 5;
+  text-align: right;
+}
+
+.greats h2 {
+  margin: 0 0 8px;
+  font-size: clamp(19px, 4.9vw, 42px);
+  font-weight: normal;
+  color: #e13b32;
+}
+
+.greats p {
+  margin: 3px 0;
+  font-family: Arial, sans-serif;
+  font-size: clamp(7px, 1.3vw, 11px);
+  letter-spacing: 0.3px;
+}
+
+/* VERTICAL STEVE TITLE */
+
+.vertical-title {
+  position: absolute;
+  bottom: 6%;
+  left: 3%;
+  z-index: 10;
+
+  color: #e33229;
+  font-family: Arial, sans-serif;
+  font-size: clamp(55px, 16.5vw, 140px);
+  font-weight: 900;
+  letter-spacing: -8px;
+  line-height: 1;
+
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+}
+
+/* BOTTOM CAPTION */
+
+.bottom-caption {
+  position: absolute;
+  bottom: 2%;
+  right: 3%;
+  z-index: 5;
+
+  color: white;
+  font-size: clamp(7px, 1.4vw, 12px);
+  letter-spacing: 3px;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 15px;
+}
+
+footer a {
+  color: #222;
+}
+
+/* TABLET */
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+  body {
+    padding: 15px;
+  }
+
+  .cover {
+    max-width: 700px;
+  }
+
+  .masthead {
+    width: 34%;
+  }
+
+  .greats {
+    width: 32%;
+  }
+
+}
+
+/* PHONE */
+
+@media screen and (max-width: 600px) {
+
+  body {
+    padding: 0;
+  }
+
+  .cover {
+    width: 100%;
+    max-width: none;
+    border: none;
+    aspect-ratio: 850 / 990;
+  }
+
+  .masthead {
+    top: 5%;
+    right: 4%;
+    width: 38%;
+  }
+
+  .new-york {
+    font-size: clamp(21px, 7vw, 34px);
+  }
+
+  .style-title {
+    font-size: clamp(21px, 6.8vw, 33px);
+  }
+
+  .magazine {
+    font-size: clamp(16px, 5.8vw, 28px);
+    letter-spacing: -1.5px;
+  }
+
+  .red-t {
+    font-size: clamp(85px, 28vw, 135px);
+    right: -5%;
+  }
+
+  .greats {
+    top: 37%;
+    right: 4%;
+    width: 36%;
+  }
+
+  .greats h2 {
+    font-size: clamp(18px, 5.5vw, 27px);
+  }
+
+  .greats p {
+    font-size: clamp(7px, 2vw, 10px);
+  }
+
+  .vertical-title {
+    font-size: clamp(55px, 17vw, 85px);
+    letter-spacing: -4px;
+    bottom: 5%;
+    left: 2%;
+  }
+
+  .bottom-caption {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
 }
